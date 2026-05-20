@@ -1,0 +1,5 @@
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation project(':microservices:eureka-service:eureka-domain:eureka-application-service')
+    implementation project(':microservices:eureka-service:eureka-domain:eureka-domain-core')
+}

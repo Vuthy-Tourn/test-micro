@@ -1,0 +1,68 @@
+server:
+  port: 16802
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://authgate:${MONGO_PASSWORD}@authgate-user-profile:27017/stadoor_users_db?authSource=admin
+      database: stadoor_users_db
+      auto-index-creation: true
+
+  mongodb:
+    password: ${MONGO_PASSWORD}
+    username: authgate
+    database: stadoor_users_db
+    host: authgate-user-profile
+    port: 27017
+    auto-index-creation: true
+    authentication-database: admin
+    reactive:
+      enabled: true
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yml
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://iam.authgate.site
+
+axon:
+  axonserver:
+    enabled: false
+  kafka:
+    bootstrap-servers: kafka-broker-1:9090,kafka-broker-2:9090,kafka-broker-3:9090
+    client-id: user-profile-service
+    default-topic: IAM.User.Event
+    message-converter-mode: default
+    consumer:
+      event-processor-mode: tracking
+      auto-offset-reset: earliest
+  eventhandling:
+    processors:
+      user-profile:
+        mode: tracking
+        source: streamableKafkaMessageSource
+  serializer:
+    events: jackson
+    messages: jackson
+    general: jackson
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://authgate-eureka-server:8761/eureka/
+  instance:
+    instance-id: ${spring.application.name}
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,env
+  endpoint:
+    health:
+      show-details: always

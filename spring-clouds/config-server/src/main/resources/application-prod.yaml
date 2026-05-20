@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    config:
+      server:
+        vault:
+          ssl:
+            trust-store: classpath:certs/vault-truststore.p12
+            trust-store-password: changeit
+            trust-store-type: PKCS12

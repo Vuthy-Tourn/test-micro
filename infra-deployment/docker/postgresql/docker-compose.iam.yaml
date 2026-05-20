@@ -1,0 +1,22 @@
+#services:
+#  stadoor-iam:
+#    image: postgres:16-alpine
+#    container_name: stadoor-iam
+#    restart: always
+#    environment:
+#      POSTGRES_DB: iam_db
+#      POSTGRES_USER: stadoor_iam
+#      POSTGRES_PASSWORD: stadoor@168
+#    volumes:
+#      - stadoor_iam_data:/var/lib/postgresql/data
+#    ports:
+#      - "16701:5432"
+#    networks:
+#      - stadoor-net
+#
+#volumes:
+#  stadoor_iam_data:
+#
+#networks:
+#  stadoor-net:
+#    external: true

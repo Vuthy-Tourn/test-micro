@@ -1,0 +1,95 @@
+# ================================================================
+# Tunnel Service — DEV Configuration
+# ================================================================
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: tunnel-service
+
+  main:
+    web-application-type: reactive
+
+  threads:
+    virtual:
+      enabled: true
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:16702/tunnel_db
+    username: stadoor_tunnel
+    password: stadoor@168
+
+    hikari:
+      pool-name: TunnelHikariPool
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    show-sql: true
+    open-in-view: false
+
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: tunnel-proxy
+              uri: no://op
+              predicates:
+                - Path=/**
+              order: 0
+
+          default-filters:
+            - PreserveHostHeader
+
+          httpclient:
+            connect-timeout: 5000
+            response-timeout: 30s
+
+tunnel:
+  ssh:
+    port: 2222
+    host-key-path: host.ser
+
+app:
+  auth:
+    mock-enabled: true
+
+  iam:
+    base-url: http://localhost:16801
+
+  tunnel:
+    public-url: http://localhost:8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway
+
+  endpoint:
+    health:
+      show-details: always
+
+    gateway:
+      enabled: true
+
+logging:
+  level:
+    root: INFO
+    kh.edu.istad.stadoor.tunnel: DEBUG
+    org.springframework.cloud.gateway: DEBUG
+    org.apache.sshd.server.forward: DEBUG

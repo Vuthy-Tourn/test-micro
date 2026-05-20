@@ -1,0 +1,101 @@
+services:
+  config-server:
+    image: ghcr.io/itprofessional-gen01/authgate-config-server:${IMAGE_TAG:-latest}
+    container_name: authgate-config-server
+    restart: unless-stopped
+    ports:
+      - "16904:16904"
+    env_file:
+      - ../config-server.env
+    volumes:
+      - ../config-server/vault-truststore.jks:/app/vault-truststore.jks:ro
+    networks:
+      - authgate-net
+
+  iam-service:
+    image: ghcr.io/itprofessional-gen01/authgate-iam-service:${IMAGE_TAG:-latest}
+    container_name: authgate-iam-service
+    restart: unless-stopped
+    ports:
+      - "16801:16801"
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      CONFIG_SERVER_URL: http://authgate-config-server:16904
+    networks:
+      - authgate-net
+
+  front-bff:
+    image: ghcr.io/itprofessional-gen01/authgate-front-bff:${IMAGE_TAG:-latest}
+    container_name: authgate-front-bff
+    restart: unless-stopped
+    ports:
+      - "16901:16901"
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      CONFIG_SERVER_URL: http://authgate-config-server:16904
+    networks:
+      - authgate-net
+
+  gateway-service:
+    image: ghcr.io/itprofessional-gen01/authgate-gateway-service:${IMAGE_TAG:-latest}
+    container_name: authgate-gateway-service
+    restart: unless-stopped
+    ports:
+      - "16803:16803"
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      CONFIG_SERVER_URL: http://authgate-config-server:16904
+    networks:
+      - authgate-net
+
+  consumer-service:
+    image: ghcr.io/itprofessional-gen01/authgate-consumer-service:${IMAGE_TAG:-latest}
+    container_name: authgate-consumer-service
+    restart: unless-stopped
+    ports:
+      - "16804:16804"
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      CONFIG_SERVER_URL: http://authgate-config-server:16904
+    networks:
+      - authgate-net
+
+  user-profile-service:
+    image: ghcr.io/itprofessional-gen01/authgate-user-profile-service:${IMAGE_TAG:-latest}
+    container_name: authgate-user-profile-service
+    restart: unless-stopped
+    ports:
+      - "16802:16802"
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      CONFIG_SERVER_URL: http://authgate-config-server:16904
+    networks:
+      - authgate-net
+
+  eureka-service:
+    image: ghcr.io/itprofessional-gen01/authgate-eureka-service:${IMAGE_TAG:-latest}
+    container_name: authgate-eureka-service
+    restart: unless-stopped
+    ports:
+      - "16805:16805"
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      CONFIG_SERVER_URL: http://authgate-config-server:16904
+    networks:
+      - authgate-net
+
+  gateway-server:
+    image: ghcr.io/itprofessional-gen01/authgate-gateway-server:${IMAGE_TAG:-latest}
+    container_name: authgate-gateway-server
+    restart: unless-stopped
+    ports:
+      - "16903:16903"
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      CONFIG_SERVER_URL: http://authgate-config-server:16904
+    networks:
+      - authgate-net
+
+networks:
+  authgate-net:
+    external: true

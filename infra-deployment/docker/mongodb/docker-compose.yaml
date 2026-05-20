@@ -1,0 +1,51 @@
+services:
+  authgate-notification:
+    image: mongo:7
+    container_name: authgate-notification
+    restart: always
+    ports:
+      - "16710:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: authgate
+      MONGO_INITDB_ROOT_PASSWORD: authgate
+    volumes:
+      - authgate_notification_data:/data/db
+    networks:
+      - authgate-net
+
+  authgate-user-profile:
+    image: mongo:7
+    container_name: authgate-user-profile
+    restart: always
+    ports:
+      - "16702:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: authgate
+      MONGO_INITDB_ROOT_PASSWORD: authgate
+    volumes:
+      - authgate_user_profile_data:/data/db
+    networks:
+      - authgate-net
+
+  authgate-eureka-db:
+    image: mongo:7
+    container_name: authgate-eureka-db
+    restart: always
+    ports:
+      - "16708:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: authgate
+      MONGO_INITDB_ROOT_PASSWORD: authgate
+    volumes:
+      - authgate_eureka_data:/data/db
+    networks:
+      - authgate-net
+
+volumes:
+  authgate_notification_data:
+  authgate_user_profile_data:
+  authgate_eureka_data:
+
+networks:
+  authgate-net:
+    external: true

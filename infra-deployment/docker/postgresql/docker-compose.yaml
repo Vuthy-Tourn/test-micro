@@ -1,0 +1,70 @@
+#services:
+#  authgate-iam:
+#    image: postgres:16-alpine
+#    container_name: authgate-iam
+#    restart: always
+#    environment:
+#      POSTGRES_DB: iam_db
+#      POSTGRES_USER: authgate_iam
+#      POSTGRES_PASSWORD: authgate@168
+#    volumes:
+#      - authgate_iam_data:/var/lib/postgresql/data
+#    ports:
+#      - "16701:5432"
+#    networks:
+#      - authgate-net
+#
+#  authgate-tunnel:
+#    image: postgres:16-alpine
+#    container_name: authgate-tunnel
+#    restart: always
+#    environment:
+#      POSTGRES_DB: tunnel_db
+#      POSTGRES_USER: authgate_tunnel
+#      POSTGRES_PASSWORD: authgate@168
+#    volumes:
+#      - authgate_tunnel_data:/var/lib/postgresql/data
+#    ports:
+#      - "16711:5432"
+#    networks:
+#      - authgate-net
+#
+#  authgate-consumer:
+#    image: postgres:16-alpine
+#    container_name: authgate-consumer
+#    restart: always
+#    environment:
+#      POSTGRES_DB: consumer_db
+#      POSTGRES_USER: authgate_consumer
+#      POSTGRES_PASSWORD: authgate@168
+#    volumes:
+#      - authgate_consumer_data:/var/lib/postgresql/data
+#    ports:
+#      - "16707:5432"
+#    networks:
+#      - authgate-net
+#
+#  authgate-gateway:
+#    image: postgres:16-alpine
+#    container_name: authgate-gateway
+#    restart: always
+#    environment:
+#      POSTGRES_DB: gateway_db
+#      POSTGRES_USER: authgate_gateway
+#      POSTGRES_PASSWORD: authgate@168
+#    volumes:
+#      - authgate_gateway_data:/var/lib/postgresql/data
+#    ports:
+#      - "16709:5432"
+#    networks:
+#      - authgate-net
+#
+#volumes:
+#  authgate_iam_data:
+#  authgate_tunnel_data:
+#  authgate_consumer_data:
+#  authgate_gateway_data:
+#
+#networks:
+#  authgate-net:
+#    external: true

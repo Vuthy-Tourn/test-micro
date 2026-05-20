@@ -1,0 +1,22 @@
+#services:
+#  stadoor-consumer:
+#    image: postgres:16-alpine
+#    container_name: stadoor-consumer
+#    restart: always
+#    environment:
+#      POSTGRES_DB: consumer_db
+#      POSTGRES_USER: stadoor_consumer
+#      POSTGRES_PASSWORD: stadoor@168
+#    volumes:
+#      - stadoor_consumer_data:/var/lib/postgresql/data
+#    ports:
+#      - "16707:5432"
+#    networks:
+#      - stadoor-net
+#
+#volumes:
+#  stadoor_consumer_data:
+#
+#networks:
+#  stadoor-net:
+#    external: true

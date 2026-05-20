@@ -1,0 +1,32 @@
+services:
+  vault:
+    image: hashicorp/vault:1.20.4
+    container_name: vault
+    cap_add:
+      - IPC_LOCK
+    command: server
+    environment:
+      SKIP_SETCAP: "1"
+    ports:
+      - "16703:8200"
+    volumes:
+      - vault-data:/vault/file
+      - vault-logs:/vault/logs
+      - ./config:/vault/config:ro
+      - ./tls:/vault/tls:ro
+      - ./policies:/vault/policies:ro
+    networks:
+      - authgate-net
+    restart: unless-stopped
+
+volumes:
+  vault-data:
+    external: true
+    name: authgate-vault-data
+  vault-logs:
+    external: true
+    name: authgate-vault-logs
+
+networks:
+  authgate-net:
+    external: true

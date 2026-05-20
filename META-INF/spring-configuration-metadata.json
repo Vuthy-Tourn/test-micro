@@ -1,0 +1,372 @@
+{
+  "groups": [
+    {
+      "name": "axon.kafka",
+      "type": "org.axonframework.extensions.kafka.KafkaProperties",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties"
+    },
+    {
+      "name": "axon.kafka.consumer",
+      "type": "org.axonframework.extensions.kafka.KafkaProperties$Consumer",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties",
+      "sourceMethod": "getConsumer()"
+    },
+    {
+      "name": "axon.kafka.consumer.ssl",
+      "type": "org.axonframework.extensions.kafka.KafkaProperties$Ssl",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Consumer",
+      "sourceMethod": "getSsl()"
+    },
+    {
+      "name": "axon.kafka.fetcher",
+      "type": "org.axonframework.extensions.kafka.KafkaProperties$Fetcher",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties",
+      "sourceMethod": "getFetcher()"
+    },
+    {
+      "name": "axon.kafka.producer",
+      "type": "org.axonframework.extensions.kafka.KafkaProperties$Producer",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties",
+      "sourceMethod": "getProducer()"
+    },
+    {
+      "name": "axon.kafka.producer.ssl",
+      "type": "org.axonframework.extensions.kafka.KafkaProperties$Ssl",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Producer",
+      "sourceMethod": "getSsl()"
+    },
+    {
+      "name": "axon.kafka.publisher",
+      "type": "org.axonframework.extensions.kafka.KafkaProperties$Publisher",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties",
+      "sourceMethod": "getPublisher()"
+    },
+    {
+      "name": "axon.kafka.ssl",
+      "type": "org.axonframework.extensions.kafka.KafkaProperties$Ssl",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties",
+      "sourceMethod": "getSsl()"
+    }
+  ],
+  "properties": [
+    {
+      "name": "axon.kafka.bootstrap-servers",
+      "type": "java.util.List<java.lang.String>",
+      "description": "Comma-delimited list of host:port pairs to use for establishing the initial connection to the Kafka cluster.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties"
+    },
+    {
+      "name": "axon.kafka.client-id",
+      "type": "java.lang.String",
+      "description": "Id to pass to the server when making requests; used for server-side logging.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties"
+    },
+    {
+      "name": "axon.kafka.consumer.auto-commit-interval",
+      "type": "java.lang.Integer",
+      "description": "Frequency in milliseconds that the consumer offsets are auto-committed to Kafka if 'enable.auto.commit' true.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Consumer"
+    },
+    {
+      "name": "axon.kafka.consumer.auto-offset-reset",
+      "type": "java.lang.String",
+      "description": "What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Consumer"
+    },
+    {
+      "name": "axon.kafka.consumer.bootstrap-servers",
+      "type": "java.util.List<java.lang.String>",
+      "description": "Comma-delimited list of host:port pairs to use for establishing the initial connection to the Kafka cluster.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Consumer"
+    },
+    {
+      "name": "axon.kafka.consumer.client-id",
+      "type": "java.lang.String",
+      "description": "Id to pass to the server when making requests; used for server-side logging.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Consumer"
+    },
+    {
+      "name": "axon.kafka.consumer.enable-auto-commit",
+      "type": "java.lang.Boolean",
+      "description": "If true the consumer's offset will be periodically committed in the background.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Consumer"
+    },
+    {
+      "name": "axon.kafka.consumer.event-processor-mode",
+      "type": "org.axonframework.extensions.kafka.KafkaProperties$EventProcessorMode",
+      "description": "Controls the default message source type which will be responsible for consuming records from Kafka and providing them to an Event Processor. Defaults to {@link EventProcessorMode#TRACKING}, which will instantiate a {@link org.axonframework.extensions.kafka.eventhandling.consumer.streamable.StreamableKafkaMessageSource}.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Consumer"
+    },
+    {
+      "name": "axon.kafka.consumer.fetch-max-wait",
+      "type": "java.lang.Integer",
+      "description": "Maximum amount of time in milliseconds the server will block before answering the fetch request if there isn't sufficient data to immediately satisfy the requirement given by \"fetch.min.bytes\".",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Consumer"
+    },
+    {
+      "name": "axon.kafka.consumer.fetch-min-size",
+      "type": "java.lang.Integer",
+      "description": "Minimum amount of data the server should return for a fetch request in bytes.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Consumer"
+    },
+    {
+      "name": "axon.kafka.consumer.heartbeat-interval",
+      "type": "java.lang.Integer",
+      "description": "Expected time in milliseconds between heartbeats to the consumer coordinator.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Consumer"
+    },
+    {
+      "name": "axon.kafka.consumer.key-deserializer",
+      "type": "java.lang.Class<?>",
+      "description": "Deserializer class for keys. Defaults to a {@link StringDeserializer}.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Consumer"
+    },
+    {
+      "name": "axon.kafka.consumer.max-poll-records",
+      "type": "java.lang.Integer",
+      "description": "Maximum number of records returned in a single call to poll().",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Consumer"
+    },
+    {
+      "name": "axon.kafka.consumer.properties",
+      "type": "java.util.Map<java.lang.String,java.lang.String>",
+      "description": "Additional consumer-specific properties used to configure the client.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Consumer"
+    },
+    {
+      "name": "axon.kafka.consumer.ssl.key-password",
+      "type": "java.lang.String",
+      "description": "Password of the private key in the key store file.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Ssl"
+    },
+    {
+      "name": "axon.kafka.consumer.ssl.keystore-location",
+      "type": "org.springframework.core.io.Resource",
+      "description": "Location of the key store file.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Ssl"
+    },
+    {
+      "name": "axon.kafka.consumer.ssl.keystore-password",
+      "type": "java.lang.String",
+      "description": "Store password for the key store file.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Ssl"
+    },
+    {
+      "name": "axon.kafka.consumer.ssl.truststore-location",
+      "type": "org.springframework.core.io.Resource",
+      "description": "Location of the trust store file.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Ssl"
+    },
+    {
+      "name": "axon.kafka.consumer.ssl.truststore-password",
+      "type": "java.lang.String",
+      "description": "Store password for the trust store file.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Ssl"
+    },
+    {
+      "name": "axon.kafka.consumer.value-deserializer",
+      "type": "java.lang.Class<?>",
+      "description": "Deserializer class for values. Defaults to a {@link ByteArrayDeserializer}.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Consumer"
+    },
+    {
+      "name": "axon.kafka.default-topic",
+      "type": "java.lang.String",
+      "description": "Default topic to which messages will be sent. Defaults to a topic called {@code \"Axon.Events\"}.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties",
+      "defaultValue": "Axon.Events"
+    },
+    {
+      "name": "axon.kafka.fetcher.buffer-size",
+      "type": "java.lang.Integer",
+      "description": "Size of the buffer containing fetched Kafka records to be transferred over in to Axon Event Messages. Will only be used for a {@link org.axonframework.extensions.kafka.eventhandling.consumer.streamable.StreamableKafkaMessageSource} instance. Defaults to {@code 10.000} records.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Fetcher",
+      "defaultValue": 10000
+    },
+    {
+      "name": "axon.kafka.fetcher.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Enables auto-configuration for consuming events from Kafka. Defaults to {@code true}.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Fetcher",
+      "defaultValue": true
+    },
+    {
+      "name": "axon.kafka.fetcher.poll-timeout",
+      "type": "java.lang.Long",
+      "description": "The time, in milliseconds, spent waiting in poll if data is not available in the buffer. If 0, returns immediately with any records that are available currently in the buffer, else returns empty. Must not be negative and defaults to {@code 5000} milliseconds. @see KafkaConsumer#poll(Duration)",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Fetcher",
+      "defaultValue": 5000
+    },
+    {
+      "name": "axon.kafka.message-converter-mode",
+      "type": "org.axonframework.extensions.kafka.KafkaProperties$MessageConverterMode",
+      "description": "Converter mode to use, can be 'default' or 'cloud_event'.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties"
+    },
+    {
+      "name": "axon.kafka.producer.acks",
+      "type": "java.lang.String",
+      "description": "Number of acknowledgments the producer requires the leader to have received before considering a request complete.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Producer"
+    },
+    {
+      "name": "axon.kafka.producer.batch-size",
+      "type": "java.lang.Integer",
+      "description": "Number of records to batch before sending.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Producer"
+    },
+    {
+      "name": "axon.kafka.producer.bootstrap-servers",
+      "type": "java.util.List<java.lang.String>",
+      "description": "Comma-delimited list of host:port pairs to use for establishing the initial connection to the Kafka cluster.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Producer"
+    },
+    {
+      "name": "axon.kafka.producer.buffer-memory",
+      "type": "java.lang.Long",
+      "description": "Total bytes of memory the producer can use to buffer records waiting to be sent to the server.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Producer"
+    },
+    {
+      "name": "axon.kafka.producer.client-id",
+      "type": "java.lang.String",
+      "description": "Id to pass to the server when making requests; used for server-side logging.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Producer"
+    },
+    {
+      "name": "axon.kafka.producer.compression-type",
+      "type": "java.lang.String",
+      "description": "Compression type for all data generated by the producer.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Producer"
+    },
+    {
+      "name": "axon.kafka.producer.event-processor-mode",
+      "type": "org.axonframework.extensions.kafka.KafkaProperties$EventProcessorMode",
+      "description": "Controls the mode of event processor responsible for sending messages to Kafka. Depending on this, different error handling behaviours are taken in case of any errors during Kafka publishing. <p> Defaults to {@link EventProcessorMode#SUBSCRIBING}, using a {@link org.axonframework.eventhandling.SubscribingEventProcessor} to publish events.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Producer"
+    },
+    {
+      "name": "axon.kafka.producer.key-serializer",
+      "type": "java.lang.Class<?>",
+      "description": "Serializer class for keys. Defaults to a {@link StringSerializer}.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Producer"
+    },
+    {
+      "name": "axon.kafka.producer.properties",
+      "type": "java.util.Map<java.lang.String,java.lang.String>",
+      "description": "Additional producer-specific properties used to configure the client.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Producer"
+    },
+    {
+      "name": "axon.kafka.producer.retries",
+      "type": "java.lang.Integer",
+      "description": "When greater than zero, enables retrying of failed sends.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Producer"
+    },
+    {
+      "name": "axon.kafka.producer.ssl.key-password",
+      "type": "java.lang.String",
+      "description": "Password of the private key in the key store file.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Ssl"
+    },
+    {
+      "name": "axon.kafka.producer.ssl.keystore-location",
+      "type": "org.springframework.core.io.Resource",
+      "description": "Location of the key store file.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Ssl"
+    },
+    {
+      "name": "axon.kafka.producer.ssl.keystore-password",
+      "type": "java.lang.String",
+      "description": "Store password for the key store file.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Ssl"
+    },
+    {
+      "name": "axon.kafka.producer.ssl.truststore-location",
+      "type": "org.springframework.core.io.Resource",
+      "description": "Location of the trust store file.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Ssl"
+    },
+    {
+      "name": "axon.kafka.producer.ssl.truststore-password",
+      "type": "java.lang.String",
+      "description": "Store password for the trust store file.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Ssl"
+    },
+    {
+      "name": "axon.kafka.producer.transaction-id-prefix",
+      "type": "java.lang.String",
+      "description": "When non empty, enables transaction support for producer.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Producer"
+    },
+    {
+      "name": "axon.kafka.producer.value-serializer",
+      "type": "java.lang.Class<?>",
+      "description": "Serializer class for values. Defaults to a {@link ByteArraySerializer}.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Producer"
+    },
+    {
+      "name": "axon.kafka.properties",
+      "type": "java.util.Map<java.lang.String,java.lang.String>",
+      "description": "Additional properties, common to producers and consumers, used to configure the client.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties"
+    },
+    {
+      "name": "axon.kafka.publisher.ack-timeout",
+      "type": "java.lang.Long",
+      "description": "The publisher acknowledge timeout in milliseconds specifying how long to wait for a publisher to acknowledge a message has been sent. Defaults to {@code 1000} milliseconds.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Publisher",
+      "defaultValue": 1000
+    },
+    {
+      "name": "axon.kafka.publisher.confirmation-mode",
+      "type": "org.axonframework.extensions.kafka.eventhandling.producer.ConfirmationMode",
+      "description": "The confirmation mode used when publishing messages. Defaults to {@link ConfirmationMode#NONE}.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Publisher"
+    },
+    {
+      "name": "axon.kafka.publisher.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Enables auto-configuration for publishing events to Kafka. Defaults to {@code true}.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Publisher",
+      "defaultValue": true
+    },
+    {
+      "name": "axon.kafka.publisher.processing-group",
+      "type": "java.lang.String",
+      "description": "The Kafka Event Handler processing group. Defaults to {@code \"__axon-kafka-event-publishing-group\"}",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Publisher"
+    },
+    {
+      "name": "axon.kafka.ssl.key-password",
+      "type": "java.lang.String",
+      "description": "Password of the private key in the key store file.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Ssl"
+    },
+    {
+      "name": "axon.kafka.ssl.keystore-location",
+      "type": "org.springframework.core.io.Resource",
+      "description": "Location of the key store file.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Ssl"
+    },
+    {
+      "name": "axon.kafka.ssl.keystore-password",
+      "type": "java.lang.String",
+      "description": "Store password for the key store file.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Ssl"
+    },
+    {
+      "name": "axon.kafka.ssl.truststore-location",
+      "type": "org.springframework.core.io.Resource",
+      "description": "Location of the trust store file.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Ssl"
+    },
+    {
+      "name": "axon.kafka.ssl.truststore-password",
+      "type": "java.lang.String",
+      "description": "Store password for the trust store file.",
+      "sourceType": "org.axonframework.extensions.kafka.KafkaProperties$Ssl"
+    }
+  ],
+  "hints": []
+}

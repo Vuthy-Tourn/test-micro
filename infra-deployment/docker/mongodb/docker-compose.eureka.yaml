@@ -1,0 +1,21 @@
+services:
+  stadoor-eureka-db:
+    image: mongo:7
+    container_name: eureka_db
+    ports:
+      - "16708:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: stadoor
+      MONGO_INITDB_ROOT_PASSWORD: stadoor
+    volumes:
+      - mongodb_log:/var/log/mongodb
+      - stadoor_eureka_data:/data/db
+    networks:
+      - stadoor-net
+volumes:
+  stadoor_eureka_data:
+  mongodb_log:
+
+networks:
+  stadoor-net:
+    external: true

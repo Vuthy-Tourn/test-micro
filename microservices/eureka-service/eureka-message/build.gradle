@@ -1,0 +1,7 @@
+dependencies {
+    implementation "org.springframework.boot:spring-boot-starter-kafka"
+    implementation project(":microservices:eureka-service:common")
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation project(":microservices:eureka-service:eureka-domain:eureka-application-service")
+}

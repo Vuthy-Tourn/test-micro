@@ -1,0 +1,92 @@
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+}
+rootProject.name = "stadoor"
+
+// Root project for shared resources
+include(':common:common-domain')
+
+// Microservices with Hexagonal structure
+// eureka-service
+include(':microservices:eureka-service:eureka-application:eureka-restapi')
+include(':microservices:eureka-service:common')
+include(':microservices:eureka-service:eureka-webclient')
+include(':microservices:eureka-service:eureka-domain:eureka-application-service')
+include(':microservices:eureka-service:eureka-domain:eureka-domain-core')
+include(':microservices:eureka-service:eureka-datapersistence')
+include(':microservices:eureka-service:eureka-message')
+include(':microservices:eureka-server')
+include(':microservices:eureka-service:eureka-main')
+
+
+
+// Consumer Service
+include(':microservices:consumer-service:consumer-main')
+include(':microservices:consumer-service:consumer-application:consumer-restapi')
+include(':microservices:consumer-service:consumer-domain:consumer-application-service')
+include(':microservices:consumer-service:consumer-domain:consumer-domain-core')
+include(':microservices:consumer-service:consumer-datapersistence')
+include(':microservices:consumer-service:consumer-message')
+
+// IAM Service
+include(':microservices:iam-service:iam-main')
+include(':microservices:iam-service:iam-webui')
+include(':microservices:iam-service:iam-application:iam-restapi')
+include(':microservices:iam-service:iam-domain:iam-application-service')
+include(':microservices:iam-service:iam-domain:iam-domain-core')
+include(':microservices:iam-service:iam-persistence')
+include(':microservices:iam-service:iam-message')
+include(':microservices:iam-service:iam-infrastructure')
+include(':microservices:iam-service:iam-common')
+
+// Notification Service
+include(':microservices:notification-service:notification-main')
+include(':microservices:notification-service:notification-application:notification-restapi')
+//include(':microservices:notification-service:notification-domain')
+include(':microservices:notification-service:notification-domain:notification-application-service')
+include(':microservices:notification-service:notification-domain:notification-domain-core')
+include(':microservices:notification-service:notification-datapersistence')
+include(':microservices:notification-service:notification-messaging')
+
+// User Profile Service
+include(':microservices:user-profile-service:user-profile-main')
+include(':microservices:user-profile-service:user-profile-application:user-profile-restapi')
+include(':microservices:user-profile-service:user-profile-datapersistence')
+include(':microservices:user-profile-service:user-profile-message')
+include(':microservices:user-profile-service:user-profile-domain:user-profile-application-service')
+include(':microservices:user-profile-service:user-profile-domain:user-profile-domain-core')
+
+// Tunnel Service
+include(':microservices:tunnel-service:tunnel-main')
+include(':microservices:tunnel-service:tunnel-application:tunnel-restapi')
+include(':microservices:tunnel-service:tunnel-application:tunnel-controlplane')
+include(':microservices:tunnel-service:tunnel-domain:tunnel-application-service')
+include(':microservices:tunnel-service:tunnel-domain:tunnel-domain-core')
+include(':microservices:tunnel-service:tunnel-datapersistence:tunnel-edge-server')
+include(':microservices:tunnel-service:tunnel-datapersistence:tunnel-network-core')
+include(':microservices:tunnel-service:tunnel-datapersistence:tunnel-persistence')
+
+// Gateway Service
+include(':microservices:gateway-service:gateway-main')
+include(':microservices:gateway-service:gateway-application:gateway-restapi')
+include(':microservices:gateway-service:gateway-domain:gateway-application-service')
+include(':microservices:gateway-service:gateway-domain:gateway-domain-core')
+include(':microservices:gateway-service:gateway-datapersistence')
+include(':microservices:gateway-service:gateway-message')
+include(':microservices:gateway-service:gateway-infrastructure')
+
+// Storage Service
+include(':microservices:storage-service:storage-main')
+include(':microservices:storage-service:storage-application:storage-restapi')
+include(':microservices:storage-service:storage-persistence')
+include(':microservices:storage-service:storage-domain:storage-domain-core')
+include(':microservices:storage-service:storage-domain:storage-application-service')
+
+
+// Spring Cloud Infrastructure
+include(':spring-clouds:admin-bff')
+include(':spring-clouds:front-bff')
+// Gateway Server
+
+include(':spring-clouds:gateway-server')
+include(':spring-clouds:config-server')

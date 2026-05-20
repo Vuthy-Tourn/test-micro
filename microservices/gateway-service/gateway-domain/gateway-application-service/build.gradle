@@ -1,0 +1,12 @@
+dependencies {
+    implementation project(':microservices:gateway-service:gateway-domain:gateway-domain-core')
+    implementation project(':common:common-domain')
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.axonframework:axon-spring-boot-starter:4.13.0'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'io.projectreactor:reactor-core'
+
+
+}

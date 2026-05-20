@@ -1,0 +1,4 @@
+service:
+  info: Istad Stadoor - Microservices
+  tag: stadoor
+  version: 1.0

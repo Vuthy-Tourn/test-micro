@@ -1,0 +1,20 @@
+services:
+  authgate-redis:
+    image: redis:7.4-alpine
+    container_name: authgate-redis
+    restart: always
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    ports:
+      - "16712:6379"
+    volumes:
+      - authgate_redis_data:/data
+      - ./redis.conf:/usr/local/etc/redis/redis.conf:ro
+    networks:
+      - authgate-net
+
+volumes:
+  authgate_redis_data:
+
+networks:
+  authgate-net:
+    external: true

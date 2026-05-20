@@ -1,0 +1,23 @@
+services:
+
+  # Notification Database
+  stadoor-notification:
+    image: mongo:7
+    container_name: stadoor-notification
+    ports:
+      - "16710:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: stadoor
+      MONGO_INITDB_ROOT_PASSWORD: stadoor
+    volumes:
+      - mongodb_notification_log:/var/log/mongodb
+      - stadoor_notification_data:/data/db
+    networks:
+      - stadoor-net
+volumes:
+  stadoor_notification_data:
+  mongodb_notification_log:
+
+networks:
+  stadoor-net:
+    external: true

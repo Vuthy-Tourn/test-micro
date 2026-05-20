@@ -1,0 +1,77 @@
+server:
+  port: 16804
+
+spring:
+  r2dbc:
+    url: r2dbc:postgresql://authgate-consumer:5432/consumer_db
+    username: authgate_consumer
+    password: ${DB_PASSWORD}
+
+  datasource:
+    url: jdbc:postgresql://authgate-consumer:5432/consumer_db
+    username: authgate_consumer
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  kafka:
+    bootstrap-servers: kafka-broker-1:9090,kafka-broker-2:9090,kafka-broker-3:9090
+    consumer:
+      group-id: consumer-service-sync-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
+      properties:
+        isolation.level: read_committed
+        security.protocol: PLAINTEXT
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+
+axon:
+  axonserver:
+    enabled: false
+  kafka:
+    bootstrap-servers: kafka-broker-1:9090,kafka-broker-2:9090,kafka-broker-3:9090
+    default-topic: stadoor.consumer.events
+    client-id: kafka-axon-consumer
+    message-converter-mode: default
+    properties:
+      security.protocol: PLAINTEXT
+    publisher:
+      confirmation-mode: transactional
+    fetcher:
+      enabled: false
+    producer:
+      transaction-id-prefix: kafka-axon-consumer-
+      retries: 5
+      event-processor-mode: subscribing
+  serializer:
+    general: jackson
+    events: jackson
+    messages: jackson
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://authgate-eureka-server:8761/eureka/
+  instance:
+    instance-id: ${spring.application.name}
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,env
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    kh.edu.istad.stadoor.consumer: INFO
+
+jwt:
+  expiration: 3600
+  refresh-expiration: 2592000

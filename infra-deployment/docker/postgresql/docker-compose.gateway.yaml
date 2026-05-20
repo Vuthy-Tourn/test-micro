@@ -1,0 +1,22 @@
+#services:
+#  stadoor-gateway:
+#    image: postgres:16-alpine
+#    container_name: stadoor-gateway
+#    restart: always
+#    environment:
+#      POSTGRES_DB: gateway_db
+#      POSTGRES_USER: stadoor_gateway
+#      POSTGRES_PASSWORD: stadoor@168
+#    volumes:
+#      - stadoor_gateway_data:/var/lib/postgresql/data
+#    ports:
+#      - "16709:5432"
+#    networks:
+#      - stadoor-net
+#
+#volumes:
+#  stadoor_gateway_data:
+#
+#networks:
+#  stadoor-net:
+#    external: true

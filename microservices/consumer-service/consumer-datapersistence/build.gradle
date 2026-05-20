@@ -1,0 +1,9 @@
+dependencies {
+    implementation project(':microservices:consumer-service:consumer-domain:consumer-domain-core')
+    implementation project(':microservices:consumer-service:consumer-domain:consumer-application-service')
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+    runtimeOnly 'org.postgresql:r2dbc-postgresql'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    runtimeOnly 'org.postgresql:postgresql'
+}

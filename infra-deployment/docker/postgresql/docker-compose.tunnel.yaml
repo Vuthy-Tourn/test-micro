@@ -1,0 +1,22 @@
+#services:
+#  stadoor-tunnel:
+#    image: postgres:16-alpine
+#    container_name: stadoor-tunnel
+#    restart: always
+#    environment:
+#      POSTGRES_DB: tunnel_db
+#      POSTGRES_USER: stadoor_tunnel
+#      POSTGRES_PASSWORD: stadoor@168
+#    volumes:
+#      - stadoor_tunnel_data:/var/lib/postgresql/data
+#    ports:
+#      - "16702:5432"
+#    networks:
+#      - stadoor-net
+#
+#volumes:
+#  stadoor_tunnel_data:
+#
+#networks:
+#  stadoor-net:
+#    external: true
