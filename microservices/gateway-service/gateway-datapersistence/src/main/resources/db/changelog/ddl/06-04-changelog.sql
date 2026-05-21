@@ -1,6 +1,0 @@
---
--- ALTER TABLE domain_event_entry
--- DROP COLUMN global_index;
---
--- ALTER TABLE domain_event_entry
---     ADD COLUMN global_index BIGSERIAL PRIMARY KEY;
